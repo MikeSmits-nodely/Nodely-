@@ -104,18 +104,18 @@ export function Header() {
             <span className="font-semibold text-[#003366]">Plan een consult</span>
           </Link>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button - ONLY on small/medium screens */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-white"
+            className="lg:hidden p-2 text-white"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        {/* Mobile Navigation Menu - ONLY on small/medium screens */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/10">
+          <div className="lg:hidden py-4 border-t border-white/10">
             <nav className="flex flex-col gap-2">
               <Link
                 to="/"
