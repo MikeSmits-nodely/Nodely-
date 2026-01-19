@@ -1,11 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
-import { MessageCircle, Menu, X} from 'lucide-react';
-import { useState } from 'react';  // ADD THIS LINE
+import { MessageCircle} from 'lucide-react';
 import logo from '../assets/logo-main.png'
 
 export function Header() {
   const location = useLocation();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);  // ADD THIS LINE
   
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -25,14 +23,7 @@ export function Header() {
               />
             </div>
           </Link>
-           {/* ADD THIS BUTTON HERE */}
-      <button 
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="md:hidden p-2 text-white"
-      >
-        {mobileMenuOpen ? <X /> : <Menu />}
-      </button>
-          
+           
           {/* Navigation Menu */}
           <nav className="hidden md:flex items-center gap-8">
             <Link 
