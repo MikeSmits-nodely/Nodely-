@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { MessageCircle } from 'lucide-react';
-const logo = '/src/assets/logo-main.png'
+import logo from '../assets/logo-main.png'
 
 export function Header() {
   const location = useLocation();
