@@ -95,7 +95,7 @@ export function Header() {
             </Link>
           </nav>
 
-          {/* CTA Button */}
+          {/* Desktop CTA Button - large screens only */}
           <Link 
             to="/contact"
             className="hidden lg:flex items-center gap-2 bg-white rounded-lg px-5 py-3 border-2 border-transparent hover:border-[#FF6200] hover:shadow-lg transition-all duration-200"
@@ -104,7 +104,16 @@ export function Header() {
             <span className="font-semibold text-[#003366]">Plan een consult</span>
           </Link>
 
-          {/* Mobile menu button */}
+          {/* Tablet CTA Button - medium screens only */}
+          <Link 
+            to="/contact"
+            className="hidden md:flex lg:hidden items-center gap-2 bg-white rounded-lg px-5 py-3 border-2 border-transparent hover:border-[#FF6200] hover:shadow-lg transition-all duration-200"
+          >
+            <MessageCircle className="w-5 h-5 text-[#003366]" />
+            <span className="font-semibold text-[#003366]">Contact</span>
+          </Link>
+
+          {/* Mobile menu button - small screens only */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 text-white"
