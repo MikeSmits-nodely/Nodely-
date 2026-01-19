@@ -180,7 +180,7 @@ export function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-[#003366] mb-1">LinkedIn</h3>
-                    <a href="#" className="text-gray-600 hover:text-[#FF6200] transition-colors">
+                    <a href="https://www.linkedin.com/company/nodelynl/" className="text-gray-600 hover:text-[#FF6200] transition-colors">
                       Volg ons op LinkedIn
                     </a>
                   </div>
