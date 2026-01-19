@@ -1,11 +1,19 @@
 import { Link, useLocation } from 'react-router-dom';
 import { MessageCircle, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import logo from '../assets/logo-main.png'
 
 export function Header() {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  // Check screen size on resize
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -104,18 +112,20 @@ export function Header() {
             <span className="font-semibold text-[#003366]">Plan een consult</span>
           </Link>
 
-          {/* Mobile menu button - ONLY on small/medium screens */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-white"
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          {/* Mobile menu button - ONLY on mobile */}
+          {isMobile && (
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-white"
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          )}
         </div>
 
-        {/* Mobile Navigation Menu - ONLY on small/medium screens */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-white/10">
+        {/* Mobile Navigation Menu - ONLY on mobile */}
+        {isMobile && mobileMenuOpen && (
+          <div className="py-4 border-t border-white/10">
             <nav className="flex flex-col gap-2">
               <Link
                 to="/"
