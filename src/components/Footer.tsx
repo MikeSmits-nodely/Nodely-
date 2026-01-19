@@ -1,7 +1,7 @@
 
 import { Linkedin, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-const logo = '/src/assets/logo-main.png'
+const logo = '/logo-main.png'
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
