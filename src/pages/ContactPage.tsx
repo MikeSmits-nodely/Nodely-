@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Mail, MapPin, Linkedin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Send, CheckCircle, AlertCircle, X } from 'lucide-react';
 import { useState } from 'react';
 import { AnimatedBackground } from '../components/AnimatedBackground';
 
@@ -18,10 +18,8 @@ export function ContactPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
 
     try {
-      const formElement = e.currentTarget;
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -37,7 +35,6 @@ export function ContactPage() {
 
       if (response.ok) {
         setSubmitStatus('success');
-        setSubmitMessage('Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.');
         setFormData({
           name: '',
           email: '',
@@ -45,8 +42,8 @@ export function ContactPage() {
           phone: '',
           message: ''
         });
-        // Clear success message after 5 seconds
-        setTimeout(() => setSubmitStatus('idle'), 5000);
+        // Auto-close after 4 seconds
+        setTimeout(() => setSubmitStatus('idle'), 4000);
       } else {
         setSubmitStatus('error');
         setSubmitMessage('Er is iets misgegaan. Probeer het alstublieft opnieuw.');
@@ -66,8 +63,87 @@ export function ContactPage() {
     });
   };
 
+  const closeModal = () => {
+    setSubmitStatus('idle');
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Modal Backdrop */}
+      {submitStatus !== 'idle' && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeModal}
+          className="fixed inset-0 bg-black/50 z-40"
+        />
+      )}
+
+      {/* Success Modal */}
+      {submitStatus === 'success' && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 20 }}
+          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 z-50"
+        >
+          <div className="flex flex-col items-center text-center">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.1, type: 'spring', damping: 20, stiffness: 200 }}
+              className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4"
+            >
+              <CheckCircle className="w-8 h-8 text-green-600" />
+            </motion.div>
+            <h3 className="text-2xl font-bold text-[#003366] mb-2">Bedankt!</h3>
+            <p className="text-gray-600 mb-6">
+              Bedankt voor je bericht, we komen zo snel mogelijk bij je terug.
+            </p>
+            <button
+              onClick={closeModal}
+              className="w-full bg-[#FF6200] hover:bg-[#E55800] text-white px-6 py-3 rounded-lg font-medium transition-all duration-200"
+            >
+              Sluiten
+            </button>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Error Modal */}
+      {submitStatus === 'error' && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 20 }}
+          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 z-50"
+        >
+          <div className="flex flex-col items-center text-center">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.1, type: 'spring', damping: 20, stiffness: 200 }}
+              className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4"
+            >
+              <AlertCircle className="w-8 h-8 text-red-600" />
+            </motion.div>
+            <h3 className="text-2xl font-bold text-[#003366] mb-2">Oeps!</h3>
+            <p className="text-gray-600 mb-6">
+              {submitMessage}
+            </p>
+            <button
+              onClick={closeModal}
+              className="w-full bg-[#FF6200] hover:bg-[#E55800] text-white px-6 py-3 rounded-lg font-medium transition-all duration-200"
+            >
+              Probeer opnieuw
+            </button>
+          </div>
+        </motion.div>
+      )}
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#003366] to-[#004080] pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -118,32 +194,6 @@ export function ContactPage() {
                     Don't fill this out: <input name="bot-field" />
                   </label>
                 </p>
-
-                {/* Success Message */}
-                {submitStatus === 'success' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="flex items-start gap-3 p-4 bg-green-50 border border-green-200 rounded-lg"
-                  >
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-green-800">{submitMessage}</p>
-                  </motion.div>
-                )}
-
-                {/* Error Message */}
-                {submitStatus === 'error' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded-lg"
-                  >
-                    <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-red-800">{submitMessage}</p>
-                  </motion.div>
-                )}
 
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
