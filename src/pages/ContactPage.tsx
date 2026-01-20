@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { Mail, MapPin, Linkedin, Send } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Mail, MapPin, Linkedin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 import { AnimatedBackground } from '../components/AnimatedBackground';
 
@@ -11,10 +11,52 @@ export function ContactPage() {
     phone: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitMessage, setSubmitMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Let Netlify handle the submission
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const formElement = e.currentTarget;
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          'form-name': 'contact',
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          message: formData.message
+        }).toString()
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setSubmitMessage('Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.');
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          phone: '',
+          message: ''
+        });
+        // Clear success message after 5 seconds
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+        setSubmitMessage('Er is iets misgegaan. Probeer het alstublieft opnieuw.');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      setSubmitMessage('Netwerkfout. Probeer het alstublieft opnieuw.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -49,17 +91,17 @@ export function ContactPage() {
       {/* Contact Content */}
       <section className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="order-2 md:order-1"
             >
               <h2 className="text-3xl font-bold text-[#003366] mb-8">
-                Neem contact op
+                Stuur ons een bericht
               </h2>
+              
               <form 
                 name="contact" 
                 method="POST" 
@@ -69,14 +111,43 @@ export function ContactPage() {
                 className="space-y-6"
               >
                 <input type="hidden" name="form-name" value="contact" />
+                
+                {/* Honeypot field for spam protection */}
                 <p hidden>
                   <label>
-                    Don’t fill this out: <input name="bot-field" />
+                    Don't fill this out: <input name="bot-field" />
                   </label>
                 </p>
+
+                {/* Success Message */}
+                {submitStatus === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="flex items-start gap-3 p-4 bg-green-50 border border-green-200 rounded-lg"
+                  >
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-green-800">{submitMessage}</p>
+                  </motion.div>
+                )}
+
+                {/* Error Message */}
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded-lg"
+                  >
+                    <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-red-800">{submitMessage}</p>
+                  </motion.div>
+                )}
+
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-[#003366] mb-2">
-                    Naam*
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Naam *
                   </label>
                   <input
                     type="text"
@@ -85,12 +156,15 @@ export function ContactPage() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF6200] focus:ring-[#FF6200] focus:ring-opacity-50 outline-none transition-colors"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6200] focus:border-transparent outline-none transition-all hover:border-gray-400 disabled:bg-gray-50 disabled:cursor-not-allowed"
+                    placeholder="Jan Jansen"
                   />
                 </div>
+
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-[#003366] mb-2">
-                    Email*
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    E-mailadres *
                   </label>
                   <input
                     type="email"
@@ -99,11 +173,14 @@ export function ContactPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF6200] focus:ring-[#FF6200] focus:ring-opacity-50 outline-none transition-colors"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6200] focus:border-transparent outline-none transition-all hover:border-gray-400 disabled:bg-gray-50 disabled:cursor-not-allowed"
+                    placeholder="jan@bedrijf.nl"
                   />
                 </div>
+
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-[#003366] mb-2">
+                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
                     Bedrijf
                   </label>
                   <input
@@ -112,11 +189,14 @@ export function ContactPage() {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF6200] focus:ring-[#FF6200] focus:ring-opacity-50 outline-none transition-colors"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6200] focus:border-transparent outline-none transition-all hover:border-gray-400 disabled:bg-gray-50 disabled:cursor-not-allowed"
+                    placeholder="Bedrijfsnaam BV"
                   />
                 </div>
+
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-[#003366] mb-2">
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                     Telefoonnummer
                   </label>
                   <input
@@ -125,43 +205,62 @@ export function ContactPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF6200] focus:ring-[#FF6200] focus:ring-opacity-50 outline-none transition-colors"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6200] focus:border-transparent outline-none transition-all hover:border-gray-400 disabled:bg-gray-50 disabled:cursor-not-allowed"
+                    placeholder="+31 6 12345678"
                   />
                 </div>
+
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-[#003366] mb-2">
-                    Bericht*
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Bericht *
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     required
-                    rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF6200] focus:ring-[#FF6200] focus:ring-opacity-50 outline-none transition-colors"
+                    disabled={isSubmitting}
+                    rows={6}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6200] focus:border-transparent outline-none transition-all resize-none hover:border-gray-400 disabled:bg-gray-50 disabled:cursor-not-allowed"
+                    placeholder="Vertel ons over jouw uitdaging of vraag..."
                   />
                 </div>
+
                 <button
                   type="submit"
-                  className="w-full bg-[#FF6200] text-white py-3 rounded-lg font-medium hover:bg-[#FF6200]/90 transition-colors flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#FF6200] hover:bg-[#E55800] disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-8 py-4 rounded-lg font-medium text-lg transition-all duration-200 hover:shadow-lg flex items-center justify-center gap-2"
                 >
-                  Verstuur bericht <Send className="w-4 h-4" />
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Verzenden...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Verstuur bericht
+                    </>
+                  )}
                 </button>
               </form>
             </motion.div>
 
             {/* Contact Info */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="order-1 md:order-2 space-y-12"
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              {/* Contact Details */}
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#FF6200]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <h2 className="text-3xl font-bold text-[#003366] mb-8">
+                Contactgegevens
+              </h2>
+
+              <div className="space-y-8 mb-12">
+                <div className="flex items-start gap-4 group cursor-pointer">
+                  <div className="w-12 h-12 bg-[#FF6200]/10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#FF6200]/20 group-hover:scale-110">
                     <Mail className="w-6 h-6 text-[#FF6200]" />
                   </div>
                   <div>
@@ -172,8 +271,8 @@ export function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#FF6200]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="flex items-start gap-4 group cursor-pointer">
+                  <div className="w-12 h-12 bg-[#FF6200]/10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#FF6200]/20 group-hover:scale-110">
                     <MapPin className="w-6 h-6 text-[#FF6200]" />
                   </div>
                   <div>
