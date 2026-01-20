@@ -55,10 +55,11 @@ export function AlgemeneVoorwaardenPage() {
                 In deze algemene voorwaarden wordt verstaan onder:
               </p>
               <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                <li><strong>Nodely:</strong> de besloten vennootschap Nodely, gevestigd te Eindhoven, Nederland</li>
+                <li><strong>Nodely:</strong> Nodely, gevestigd te Eindhoven, Nederland, ingeschreven bij de Kamer van Koophandel</li>
                 <li><strong>Klant:</strong> de natuurlijke of rechtspersoon die een overeenkomst aangaat met Nodely</li>
-                <li><strong>Diensten:</strong> alle diensten die door Nodely worden geleverd, waaronder AI-ontwikkeling, automatisering en consultancy</li>
-                <li><strong>Overeenkomst:</strong> elke afspraak tussen Nodely en de Klant met betrekking tot de Diensten</li>
+                <li><strong>Diensten:</strong> alle diensten die door Nodely worden geleverd, waaronder AI-ontwikkeling, automatiseringsoplossingen, softwareontwikkeling en consultancy</li>
+                <li><strong>Overeenkomst:</strong> elke afspraak tussen Nodely en de Klant met betrekking tot de levering van Diensten</li>
+                <li><strong>Partijen:</strong> Nodely en de Klant samen</li>
               </ul>
             </div>
 
@@ -158,17 +159,23 @@ export function AlgemeneVoorwaardenPage() {
               <h2 className="text-3xl font-bold text-[#003366] mb-4">8. Intellectueel eigendom</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
                 Alle intellectuele eigendomsrechten met betrekking tot de door Nodely ontwikkelde of ter 
-                beschikking gestelde software, documenten, adviezen en andere materialen berusten uitsluitend 
-                bij Nodely of haar licentiegevers.
+                beschikking gestelde software, AI-modellen, code, algoritmes, documenten, adviezen, 
+                ontwerpen en andere materialen berusten uitsluitend bij Nodely of haar licentiegevers.
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
-                De Klant verkrijgt uitsluitend de gebruiksrechten die expliciet in deze voorwaarden of 
-                anderszins schriftelijk worden toegekend. Een daarop gericht verzoek mag de Klant uitsluitend 
-                na voorafgaande schriftelijke toestemming van Nodely.
+                De Klant verkrijgt uitsluitend de gebruiksrechten die expliciet in de overeenkomst of 
+                deze voorwaarden worden toegekend. Tenzij uitdrukkelijk anders overeengekomen, verkrijgt 
+                de Klant een niet-exclusief, niet-overdraagbaar gebruiksrecht voor de overeengekomen Diensten.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Het is de Klant niet toegestaan de door Nodely geleverde materialen te verveelvoudigen, 
+                openbaar te maken, of ter beschikking te stellen aan derden, behoudens voor zover dit 
+                noodzakelijk is voor het overeengekomen gebruik.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                Het is de Klant niet toegestaan enige aanduiding met betrekking tot intellectuele eigendomsrechten 
-                uit de materialen te verwijderen of te wijzigen.
+                Het is de Klant niet toegestaan enige aanduiding met betrekking tot auteursrechten, 
+                merken, handelsnamen of andere intellectuele eigendomsrechten uit de materialen te 
+                verwijderen of te wijzigen.
               </p>
             </div>
 
@@ -189,18 +196,25 @@ export function AlgemeneVoorwaardenPage() {
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-[#003366] mb-4">10. Aansprakelijkheid</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Nodely is uitsluitend aansprakelijk voor schade die het directe gevolg is van een toerekenbare 
-                tekortkoming in de nakoming van de overeenkomst.
+                Nodely is uitsluitend aansprakelijk voor schade die het directe en voorzienbare gevolg is 
+                van een aan Nodely toerekenbare tekortkoming in de nakoming van de overeenkomst, dan wel 
+                van een onrechtmatige daad van Nodely.
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
-                De aansprakelijkheid van Nodely is beperkt tot het bedrag dat in het desbetreffende geval 
-                onder de door Nodely afgesloten bedrijfsaansprakelijkheidsverzekering wordt uitbetaald, 
+                De totale aansprakelijkheid van Nodely is beperkt tot het bedrag dat in het desbetreffende 
+                geval onder de door Nodely afgesloten beroepsaansprakelijkheidsverzekering wordt uitbetaald, 
                 vermeerderd met het eigen risico dat volgens de polisvoorwaarden niet ten laste van de 
-                verzekeraar komt.
+                verzekeraar komt. Indien om welke reden ook geen uitkering plaatsvindt, is de aansprakelijkheid 
+                beperkt tot het factuurbedrag van de betreffende opdracht, met een maximum van € 5.000,-.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Nodely is nimmer aansprakelijk voor indirecte schade, waaronder maar niet beperkt tot 
+                gevolgschade, gederfde winst, gemiste besparingen, verlies van gegevens en schade door 
+                bedrijfsstagnatie.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                Nodely is nimmer aansprakelijk voor indirecte schade, waaronder gevolgschade, gederfde winst, 
-                gemiste besparingen en schade door bedrijfsstagnatie.
+                De Klant vrijwaart Nodely voor alle aanspraken van derden die verband houden met de door 
+                Nodely geleverde Diensten, tenzij de schade het gevolg is van opzet of grove schuld van Nodely.
               </p>
             </div>
 
@@ -221,35 +235,60 @@ export function AlgemeneVoorwaardenPage() {
 
             {/* Wijzigingen en aanvullingen */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-[#003366] mb-4">12. Wijzigingen en aanvullingen</h2>
+              <h2 className="text-3xl font-bold text-[#003366] mb-4">12. Opzegging en ontbinding</h2>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Beide partijen kunnen de overeenkomst schriftelijk opzeggen met inachtneming van een 
+                opzegtermijn van 30 dagen, tenzij anders overeengekomen.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Nodely heeft het recht de overeenkomst met onmiddellijke ingang te ontbinden indien de 
+                Klant zijn verplichtingen uit de overeenkomst niet, niet volledig of niet tijdig nakomt, 
+                of indien Nodely goede grond heeft te vrezen dat de Klant daartoe niet in staat zal zijn.
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                Bij ontbinding zijn alle vorderingen van Nodely op de Klant onmiddellijk opeisbaar. 
+                Nodely behoudt het recht op schadevergoeding.
+              </p>
+            </div>
+
+            {/* Wijzigingen algemene voorwaarden */}
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold text-[#003366] mb-4">13. Wijzigingen algemene voorwaarden</h2>
               <p className="text-gray-600 leading-relaxed">
                 Nodely behoudt zich het recht voor deze algemene voorwaarden te wijzigen of aan te vullen. 
                 Wijzigingen gelden ook ten aanzien van reeds gesloten overeenkomsten met inachtneming van 
-                een termijn van 30 dagen na bekendmaking van de wijziging.
+                een termijn van 30 dagen na schriftelijke bekendmaking van de wijziging aan de Klant.
               </p>
             </div>
 
             {/* Toepasselijk recht */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-[#003366] mb-4">13. Toepasselijk recht en bevoegde rechter</h2>
+              <h2 className="text-3xl font-bold text-[#003366] mb-4">14. Toepasselijk recht en geschillen</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Op alle overeenkomsten tussen Nodely en de Klant is uitsluitend Nederlands recht van toepassing.
+                Op alle overeenkomsten tussen Nodely en de Klant is uitsluitend Nederlands recht van toepassing, 
+                met uitsluiting van het Weens Koopverdrag (CISG).
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Partijen zullen zich eerst tot het uiterste inspannen om een geschil in onderling overleg 
+                op te lossen alvorens een beroep te doen op de rechter.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                Alle geschillen tussen partijen zullen worden voorgelegd aan de bevoegde rechter in het 
-                arrondissement waar Nodely is gevestigd, tenzij de wet dwingend anders voorschrijft.
+                Alle geschillen tussen partijen die niet in onderling overleg kunnen worden opgelost, 
+                zullen uitsluitend worden voorgelegd aan de bevoegde rechter in het arrondissement 
+                Oost-Brabant (Eindhoven), tenzij de wet dwingend anders voorschrijft.
               </p>
             </div>
 
             {/* Contact */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-[#003366] mb-4">14. Contact</h2>
+              <h2 className="text-3xl font-bold text-[#003366] mb-4">15. Contact</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
                 Voor vragen over deze algemene voorwaarden kunt u contact met ons opnemen:
               </p>
               <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                <p className="text-gray-600"><strong>Nodely</strong></p>
-                <p className="text-gray-600">Email: info@nodely.nl</p>
+                <p className="text-gray-600 mb-2"><strong>Nodely</strong></p>
+                <p className="text-gray-600">E-mail: info@nodely.nl</p>
+                <p className="text-gray-600">Telefoon: +31 6 83367060</p>
                 <p className="text-gray-600">Locatie: Eindhoven, Nederland</p>
               </div>
             </div>

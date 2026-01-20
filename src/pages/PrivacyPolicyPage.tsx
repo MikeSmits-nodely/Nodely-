@@ -62,30 +62,35 @@ export function PrivacyPolicyPage() {
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-[#003366] mb-4">2. Gegevens die we verzamelen</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Wij kunnen de volgende categorieën persoonlijke gegevens verzamelen:
+                Via ons contactformulier verzamelen wij de volgende persoonlijke gegevens:
               </p>
               <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                <li><strong>Identiteitsgegevens:</strong> naam, functietitel, bedrijfsnaam</li>
-                <li><strong>Contactgegevens:</strong> e-mailadres, telefoonnummer, postadres</li>
-                <li><strong>Technische gegevens:</strong> IP-adres, browsertype, tijdzone-instellingen</li>
-                <li><strong>Gebruiksgegevens:</strong> informatie over hoe u onze website gebruikt</li>
-                <li><strong>Marketinggegevens:</strong> uw voorkeuren voor het ontvangen van marketing van ons</li>
+                <li><strong>Naam:</strong> verplicht veld</li>
+                <li><strong>E-mailadres:</strong> verplicht veld</li>
+                <li><strong>Bedrijfsnaam:</strong> optioneel veld</li>
+                <li><strong>Telefoonnummer:</strong> optioneel veld</li>
+                <li><strong>Bericht:</strong> uw vraag of opmerking</li>
               </ul>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                <strong>Technische gegevens:</strong> IP-adres (automatisch verzameld door Netlify voor beveiligingsdoeleinden en spam-preventie)
+              </p>
             </div>
 
             {/* Hoe we uw gegevens gebruiken */}
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-[#003366] mb-4">3. Hoe we uw gegevens gebruiken</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Wij gebruiken uw persoonlijke gegevens voor de volgende doeleinden:
+                Wij gebruiken uw persoonlijke gegevens uitsluitend voor de volgende doeleinden:
               </p>
               <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                <li>Om onze diensten aan u te leveren en contractuele verplichtingen na te komen</li>
-                <li>Om contact met u op te nemen over producten en diensten die van belang kunnen zijn</li>
-                <li>Om onze website en diensten te verbeteren</li>
-                <li>Om te voldoen aan wettelijke en regelgevende verplichtingen</li>
-                <li>Om fraude te voorkomen en de beveiliging van onze systemen te waarborgen</li>
+                <li>Om uw contactverzoek te beantwoorden en met u te communiceren over uw vraag</li>
+                <li>Om informatie te verstrekken over onze diensten naar aanleiding van uw verzoek</li>
+                <li>Om fraude te voorkomen en de beveiliging van onze website te waarborgen</li>
               </ul>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                <strong>Rechtsgrond voor verwerking:</strong> Uw toestemming (door het vrijwillig invullen en versturen van het contactformulier) 
+                en ons gerechtvaardigd belang om uw vraag te beantwoorden en communicatie met u te onderhouden.
+              </p>
             </div>
 
             {/* Gegevensbeveiliging */}
@@ -103,25 +108,44 @@ export function PrivacyPolicyPage() {
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-[#003366] mb-4">5. Delen van gegevens</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Wij kunnen uw persoonlijke gegevens delen met:
+                Wij delen uw persoonlijke gegevens uitsluitend met de volgende partijen:
               </p>
               <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                <li>Dienstverleners die ons helpen bij het leveren van onze diensten (bijv. hosting, CRM, analytics)</li>
-                <li>Professionele adviseurs zoals advocaten, accountants en verzekeraars</li>
-                <li>Regelgevende instanties en overheidsdiensten waar wettelijk verplicht</li>
+                <li><strong>Netlify:</strong> hosting en verwerking van contactformulieren (gevestigd in de Verenigde Staten, met passende waarborgen onder de AVG via standaard contractuele clausules)</li>
+                <li><strong>E-mailprovider:</strong> voor het versturen en ontvangen van e-mailberichten</li>
+                <li><strong>Regelgevende instanties en overheidsdiensten:</strong> alleen waar wettelijk verplicht</li>
               </ul>
               <p className="text-gray-600 leading-relaxed mt-4">
-                Wij verkopen uw persoonlijke gegevens nooit aan derden voor marketingdoeleinden.
+                <strong>Wij verkopen uw persoonlijke gegevens nooit aan derden.</strong>
+              </p>
+            </div>
+
+            {/* Internationale gegevensoverdracht */}
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold text-[#003366] mb-4">5a. Internationale gegevensoverdracht</h2>
+              <p className="text-gray-600 leading-relaxed">
+                Uw gegevens worden verwerkt door Netlify, dat servers in de Verenigde Staten gebruikt. 
+                Netlify voldoet aan de AVG-vereisten voor internationale gegevensoverdracht via standaard 
+                contractuele clausules (SCC's) die zijn goedgekeurd door de Europese Commissie. Dit zorgt 
+                ervoor dat uw gegevens ook buiten de EU adequaat beschermd worden.
               </p>
             </div>
 
             {/* Bewaartermijnen */}
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-[#003366] mb-4">6. Bewaartermijnen</h2>
-              <p className="text-gray-600 leading-relaxed">
-                Wij bewaren uw persoonlijke gegevens alleen zo lang als nodig is voor de doeleinden waarvoor 
-                we ze hebben verzameld, inclusief om te voldoen aan wettelijke, administratieve of 
-                rapportagevereisten. De bewaartermijn hangt af van het type gegevens en het doel van verwerking.
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Wij bewaren uw persoonlijke gegevens gedurende de volgende termijnen:
+              </p>
+              <ul className="list-disc pl-6 text-gray-600 space-y-2">
+                <li><strong>Contactformulier gegevens:</strong> Maximaal 2 jaar na uw laatste contact met ons, 
+                    tenzij wettelijk verplicht om deze langer te bewaren</li>
+                <li><strong>IP-adressen:</strong> Maximaal 30 dagen (automatisch bewaard door Netlify voor beveiligingsdoeleinden)</li>
+              </ul>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                Op uw verzoek kunnen wij uw gegevens eerder verwijderen, tenzij er een wettelijke verplichting 
+                is om deze langer te bewaren. U kunt hiervoor contact met ons opnemen via de contactgegevens 
+                vermeld in artikel 9.
               </p>
             </div>
 
@@ -139,30 +163,53 @@ export function PrivacyPolicyPage() {
                 <li><strong>Recht op bezwaar:</strong> u kunt bezwaar maken tegen verwerking</li>
                 <li><strong>Recht op dataportabiliteit:</strong> u kunt uw gegevens in een gestructureerd formaat opvragen</li>
               </ul>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                Om deze rechten uit te oefenen, kunt u contact met ons opnemen via de gegevens in artikel 9.
+              </p>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                <strong>Klachtrecht:</strong> U heeft ook het recht om een klacht in te dienen bij de 
+                Autoriteit Persoonsgegevens (de toezichthouder in Nederland) als u vindt dat wij uw 
+                gegevens niet correct verwerken. Meer informatie vindt u op  
+                 <a href="https://autoriteitpersoonsgegevens.nl" className="text-[#FF6200] hover:underline ml-1" target="_blank" rel="noopener noreferrer">
+                  autoriteitpersoonsgegevens.nl
+                </a>.
+              </p>
             </div>
 
             {/* Cookies */}
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-[#003366] mb-4">8. Cookies</h2>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Deze website gebruikt alleen <strong>functionele cookies</strong> die strikt noodzakelijk zijn 
+                voor de werking van de website, zoals het voorkomen van spam bij het contactformulier. 
+                Deze cookies vereisen geen toestemming onder de AVG.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                <strong>Wij gebruiken GEEN tracking cookies, analytics cookies of marketing cookies.</strong> 
+                 Uw surfgedrag wordt niet gevolgd en er worden geen gegevens verzameld voor advertentiedoeleinden.
+              </p>
               <p className="text-gray-600 leading-relaxed">
-                Onze website gebruikt cookies om onderscheid te maken tussen gebruikers en om u een betere 
-                ervaring te bieden. Cookies zijn kleine tekstbestanden die op uw apparaat worden opgeslagen. 
-                U kunt uw browser zo instellen dat deze cookies blokkeert, maar dit kan bepaalde functionaliteit 
-                van onze website beperken.
+                U kunt cookies in uw browser blokkeren via de browserinstellingen, maar dit kan de 
+                functionaliteit van het contactformulier beperken.
               </p>
             </div>
 
             {/* Contact */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold text-[#003366] mb-4">9. Contact</h2>
+              <h2 className="text-3xl font-bold text-[#003366] mb-4">9. Contact en verwerkingsverantwoordelijke</h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Voor vragen over deze privacyverklaring of om uw privacyrechten uit te oefenen, kunt u contact met ons opnemen:
+                De verwerkingsverantwoordelijke voor de verwerking van uw persoonlijke gegevens is:
               </p>
               <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                <p className="text-gray-600"><strong>Nodely</strong></p>
-                <p className="text-gray-600">Email: info@nodely.nl</p>
+                <p className="text-gray-600 mb-2"><strong>Nodely</strong></p>
+                <p className="text-gray-600">E-mail: info@nodely.nl</p>
+                <p className="text-gray-600">Telefoon: +31 6 83367060</p>
                 <p className="text-gray-600">Locatie: Eindhoven, Nederland</p>
               </div>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                Voor vragen over deze privacyverklaring of om uw privacyrechten uit te oefenen, 
+                kunt u contact met ons opnemen via bovenstaande contactgegevens.
+              </p>
             </div>
 
             {/* Wijzigingen */}
