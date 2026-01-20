@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Mail, MapPin, Linkedin, Send } from 'lucide-react';
 import { useState } from 'react';
 import { AnimatedBackground } from '../components/AnimatedBackground';
@@ -14,9 +14,7 @@ export function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    alert('Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.');
+    // Let Netlify handle the submission
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -51,21 +49,34 @@ export function ContactPage() {
       {/* Contact Content */}
       <section className="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid md:grid-cols-2 gap-16">
             {/* Contact Form */}
-            <motion.div
+            <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
+              className="order-2 md:order-1"
             >
               <h2 className="text-3xl font-bold text-[#003366] mb-8">
-                Stuur ons een bericht
+                Neem contact op
               </h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form 
+                name="contact" 
+                method="POST" 
+                data-netlify="true" 
+                netlify-honeypot="bot-field"
+                onSubmit={handleSubmit} 
+                className="space-y-6"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <p hidden>
+                  <label>
+                    Don’t fill this out: <input name="bot-field" />
+                  </label>
+                </p>
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Naam *
+                  <label htmlFor="name" className="block text-sm font-medium text-[#003366] mb-2">
+                    Naam*
                   </label>
                   <input
                     type="text"
@@ -74,14 +85,12 @@ export function ContactPage() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6200] focus:border-transparent outline-none transition-all hover:border-gray-400"
-                    placeholder="Jan Jansen"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF6200] focus:ring-[#FF6200] focus:ring-opacity-50 outline-none transition-colors"
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    E-mailadres *
+                  <label htmlFor="email" className="block text-sm font-medium text-[#003366] mb-2">
+                    Email*
                   </label>
                   <input
                     type="email"
@@ -90,13 +99,11 @@ export function ContactPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6200] focus:border-transparent outline-none transition-all hover:border-gray-400"
-                    placeholder="jan@bedrijf.nl"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF6200] focus:ring-[#FF6200] focus:ring-opacity-50 outline-none transition-colors"
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="company" className="block text-sm font-medium text-[#003366] mb-2">
                     Bedrijf
                   </label>
                   <input
@@ -105,13 +112,11 @@ export function ContactPage() {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6200] focus:border-transparent outline-none transition-all hover:border-gray-400"
-                    placeholder="Bedrijfsnaam BV"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF6200] focus:ring-[#FF6200] focus:ring-opacity-50 outline-none transition-colors"
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="phone" className="block text-sm font-medium text-[#003366] mb-2">
                     Telefoonnummer
                   </label>
                   <input
@@ -120,50 +125,55 @@ export function ContactPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6200] focus:border-transparent outline-none transition-all hover:border-gray-400"
-                    placeholder="+31 6 12345678"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF6200] focus:ring-[#FF6200] focus:ring-opacity-50 outline-none transition-colors"
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Bericht *
+                  <label htmlFor="message" className="block text-sm font-medium text-[#003366] mb-2">
+                    Bericht*
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     required
+                    rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FF6200] focus:border-transparent outline-none transition-all resize-none hover:border-gray-400"
-                    placeholder="Vertel ons over jouw uitdaging of vraag..."
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF6200] focus:ring-[#FF6200] focus:ring-opacity-50 outline-none transition-colors"
                   />
                 </div>
-
                 <button
                   type="submit"
-                  className="w-full bg-[#FF6200] hover:bg-[#E55800] text-white px-8 py-4 rounded-lg font-medium text-lg transition-all duration-200 hover:shadow-lg flex items-center justify-center gap-2"
+                  className="w-full bg-[#FF6200] text-white py-3 rounded-lg font-medium hover:bg-[#FF6200]/90 transition-colors flex items-center justify-center gap-2"
                 >
-                  <Send className="w-5 h-5" />
-                  Verstuur bericht
+                  Verstuur bericht <Send className="w-4 h-4" />
                 </button>
               </form>
             </motion.div>
 
             {/* Contact Info */}
-            <motion.div
+            <motion.div 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6 }}
+              className="order-1 md:order-2 space-y-12"
             >
-              <h2 className="text-3xl font-bold text-[#003366] mb-8">
-                Contactgegevens
-              </h2>
+              {/* Contact Details */}
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-[#FF6200]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-[#FF6200]" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#003366] mb-1">Email</h3>
+                    <a href="mailto:info@nodely.nl" className="text-gray-600 hover:text-[#FF6200] transition-colors">
+                      info@nodely.nl
+                    </a>
+                  </div>
+                </div>
 
-              <div className="space-y-8 mb-12">
-                <div className="flex items-start gap-4 group cursor-pointer">
-                  <div className="w-12 h-12 bg-[#FF6200]/10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#FF6200]/20 group-hover:scale-110">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-[#FF6200]/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-[#FF6200]" />
                   </div>
                   <div>
