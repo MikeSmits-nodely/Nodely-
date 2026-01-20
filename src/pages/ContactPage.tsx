@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Mail, MapPin, Linkedin, Send, CheckCircle, AlertCircle, X } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Send, CheckCircle, AlertCircle, X, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { AnimatedBackground } from '../components/AnimatedBackground';
 
@@ -182,18 +182,16 @@ export function ContactPage() {
                 name="contact" 
                 method="POST" 
                 data-netlify="true" 
-                netlify-honeypot="bot-field"
+                data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit} 
                 className="space-y-6"
               >
                 <input type="hidden" name="form-name" value="contact" />
                 
-                {/* Honeypot field for spam protection */}
-                <p hidden>
-                  <label>
-                    Don't fill this out: <input name="bot-field" />
-                  </label>
-                </p>
+                {/* Honeypot field for spam protection - completely hidden from humans, visible to bots */}
+                <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+                  <input type="text" name="bot-field" tabIndex={-1} autoComplete="off" />
+                </div>
 
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -323,6 +321,18 @@ export function ContactPage() {
 
                 <div className="flex items-start gap-4 group cursor-pointer">
                   <div className="w-12 h-12 bg-[#FF6200]/10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#FF6200]/20 group-hover:scale-110">
+                    <Phone className="w-6 h-6 text-[#FF6200]" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#003366] mb-1">Telefoon</h3>
+                    <a href="tel:+31683367060" className="text-gray-600 hover:text-[#FF6200] transition-colors">
+                      +31 6 83367060
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 group cursor-pointer">
+                  <div className="w-12 h-12 bg-[#FF6200]/10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#FF6200]/20 group-hover:scale-110">
                     <MapPin className="w-6 h-6 text-[#FF6200]" />
                   </div>
                   <div>
@@ -333,8 +343,8 @@ export function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#FF6200]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="flex items-start gap-4 group cursor-pointer">
+                  <div className="w-12 h-12 bg-[#FF6200]/10 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#FF6200]/20 group-hover:scale-110">
                     <Linkedin className="w-6 h-6 text-[#FF6200]" />
                   </div>
                   <div>
@@ -347,19 +357,14 @@ export function ContactPage() {
               </div>
 
               {/* Info Box */}
-              <div className="bg-gradient-to-br from-[#003366] to-[#004080] rounded-2xl p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">
+              <div className="bg-gradient-to-br from-[#003366] to-[#004080] rounded-2xl p-6 text-white">
+                <h3 className="text-xl font-bold mb-3 text-white">
                   Direct contact
                 </h3>
-                <p className="text-white/90 text-lg leading-relaxed mb-6">
+                <p className="text-white/90 leading-relaxed">
                   We streven ernaar om alle vragen binnen 24 uur te beantwoorden. 
                   Liever direct contact? Bel of mail ons.
                 </p>
-                <div className="space-y-3">
-                  <p className="text-white/90">
-                    <span className="font-semibold text-white">Email:</span> info@nodely.nl
-                  </p>
-                </div>
               </div>
             </motion.div>
           </div>
