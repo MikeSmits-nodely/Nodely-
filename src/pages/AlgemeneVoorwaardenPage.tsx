@@ -1,9 +1,17 @@
+import { useMetaTags } from '../hooks/useMetaTags';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, FileText } from 'lucide-react';
 import { AnimatedBackground } from '../components/AnimatedBackground';
 
 export function AlgemeneVoorwaardenPage() {
+  useMetaTags({
+    title: 'Algemene Voorwaarden - Nodely',
+    description: 'Bekijk de algemene voorwaarden en contractuele overeenkomsten van Nodely.',
+    keywords: 'algemene voorwaarden, terms, voorwaarden, contract',
+    ogUrl: 'https://nodely.nl/algemene-voorwaarden'
+  });
+
   return (
     <div className="min-h-screen bg-white">
       <AnimatedBackground />
