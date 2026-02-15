@@ -1,7 +1,7 @@
 
 import { Linkedin, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-const logo = '/logo-main.png'
+import logo from '../assets/logo-main.png'
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -20,8 +20,8 @@ export function Footer() {
               />
             </div>
             <p className="text-white/80 leading-relaxed max-w-md">
-              Nodely ontwikkelt klantspecifieke AI-modellen die workflows automatiseren, 
-              waardoor bedrijfsprocessen efficiënter, consistenter en kosteneffectiever worden.
+            Nodely ontwikkelt AI-gedreven workflows, waardoor klantspecifieke bedrijfsprocessen 
+            efficiënter, consistenter en kosteneffectiever worden.
             </p>
           </div>
           

@@ -1,3 +1,4 @@
+import { useMetaTags } from '../hooks/useMetaTags';
 import { motion } from 'motion/react';
 import { Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -12,6 +13,12 @@ const stijnImage = '/team/stijn-van-der-heijden.png';
 const coenImage = '/team/coen-hiddink.png';
 
 export function OverOnsPage() {
+  useMetaTags({
+    title: 'Over Ons - Nodely',
+    description: 'Lees meer over Nodely, onze missie om bedrijfsprocessen te transformeren met AI, en het expert team achter onze innovatieve oplossingen.',
+    keywords: 'over nodely, AI-bedrijf, team, missie, experts',
+    ogUrl: 'https://nodely.nl/over-ons'
+  });
 
   return (
     <div className="min-h-screen bg-white">
@@ -79,7 +86,7 @@ export function OverOnsPage() {
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-[#FF6200] rounded-full mt-2 flex-shrink-0" />
                   <p className="text-lg text-gray-700">
-                    <span className="font-bold text-[#003366]">Kwaliteit:</span> Excellence in alles wat we doen, van code tot klantenservice
+                    <span className="font-bold text-[#003366]">Kwaliteit:</span> We bewaken kwaliteit in elke stap van het proces
                   </p>
                 </div>
               </div>
@@ -106,85 +113,6 @@ export function OverOnsPage() {
                   <p className="text-white/90">Continue ondersteuning en monitoring</p>
                 </div>
               </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Approach Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-[#003366] mb-6">
-              Onze Aanpak
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Hoe we ervoor zorgen dat jouw AI-project een succes wordt
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
-            >
-              <div className="w-20 h-20 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl font-bold text-white">1</span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#003366] mb-4">
-                Kennismaking & Verkenning
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                We nemen de tijd om jouw bedrijfsprocessen echt te begrijpen. 
-                Geen standaardoplossingen, maar maatwerk dat aansluit bij jouw uitdagingen.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-center"
-            >
-              <div className="w-20 h-20 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl font-bold text-white">2</span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#003366] mb-4">
-                Ontwerpen & Testen
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                We werken iteratief en transparant. Regelmatige check-ins zorgen 
-                ervoor dat het eindproduct precies is wat je nodig hebt.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-center"
-            >
-              <div className="w-20 h-20 bg-[#003366] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl font-bold text-white">3</span>
-              </div>
-              <h3 className="text-2xl font-bold text-[#003366] mb-4">
-                Implementeren & Ondersteunen
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Na de lancering zijn we er nog steeds. Continue monitoring, 
-                optimalisatie en support zorgen voor blijvend succes.
-              </p>
             </motion.div>
           </div>
         </div>

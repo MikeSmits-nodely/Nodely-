@@ -40,7 +40,7 @@ export function HowItWorks() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-[#003366] mb-6">
-            Hoe het werkt
+            Onze aanpak
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Van idee tot implementatie in vier heldere stappen

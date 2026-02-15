@@ -1,3 +1,4 @@
+import { useMetaTags } from '../hooks/useMetaTags';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Headset, Database, Globe, Users, ArrowRight } from 'lucide-react';
@@ -38,6 +39,13 @@ const applications = [
 ];
 
 export function ApplicatiesPage() {
+  useMetaTags({
+    title: 'Applicaties - Nodely AI-oplossingen',
+    description: 'Ontdek onze aangepaste AI-applicaties: klantenservice automatisering, data-verwerking, webscraping en leadscraping.',
+    keywords: 'AI-applicaties, workflow automatisering, bedrijfssoftware, automatisering',
+    ogUrl: 'https://nodely.nl/applicaties'
+  });
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -50,7 +58,7 @@ export function ApplicatiesPage() {
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
-              <span className="text-[#FF6200]">Klantspecifieke</span> Automatiseringen
+            Klantspecifieke Automatiseringen
             </h1>
             <p className="text-xl text-white/90 leading-relaxed">
               Ontdek hoe we bedrijfsprocessen transformeren met <span className="text-[#E67E22] font-semibold">op maat gemaakte AI-oplossingen</span>. 
@@ -141,10 +149,10 @@ export function ApplicatiesPage() {
             className="mt-16 bg-gradient-to-br from-[#003366] to-[#004080] rounded-2xl p-8 md:p-12 text-white text-center"
           >
             <h3 className="text-3xl font-bold mb-4">
-              Alle oplossingen zijn <span className="text-[#FF6200]">volledig op maat</span>
+              Alle oplossingen zijn maatwerk
             </h3>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Deze voorbeelden geven een beeld van wat mogelijk is, maar elke oplossing wordt 
+              Bovenstaande voorbeelden geven een beeld van wat er mogelijk is, maar elke oplossing wordt 
               <span className="text-[#FF6200] font-semibold"> klantspecifiek gebouwd</span>. We luisteren naar jouw uitdagingen en ontwerpen een systeem 
               dat <span className="text-[#FF6200] font-semibold">perfect aansluit</span> bij jouw processen en doelen.
             </p>

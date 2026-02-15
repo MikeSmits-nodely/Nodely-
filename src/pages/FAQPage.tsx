@@ -1,3 +1,4 @@
+import { useMetaTags } from '../hooks/useMetaTags';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, HelpCircle, ChevronDown } from 'lucide-react';
@@ -51,7 +52,7 @@ const faqs = [
       },
       {
         question: 'Worden mijn gegevens gebruikt om AI-modellen te trainen?',
-        answer: 'Nee, absoluut niet. Jouw bedrijfsdata blijft volledig privé en wordt nooit gebruikt om externe AI-modellen te trainen. We gebruiken alleen jouw data om jouw specifieke oplossing te optimaliseren, en dit blijft binnen jouw beveiligde omgeving.'
+        answer: 'Nee, absoluut niet. Jouw bedrijfsdata blijft volledig privé en wordt nooit gebruikt om externe AI-modellen te trainen. We werken volgens een use and lose-principe: data die binnen de workflow wordt verwerkt, wordt niet opgeslagen in databases of andere systemen. Na verwerking wordt deze niet bewaard.'
       }
     ]
   },
@@ -92,6 +93,13 @@ const faqs = [
 ];
 
 export function FAQPage() {
+  useMetaTags({
+    title: 'Veelgestelde Vragen - Nodely',
+    description: 'Vind antwoorden op veelgestelde vragen over Nodely, onze AI-oplossingen, proces en werkwijze.',
+    keywords: 'FAQ, veelgestelde vragen, AI-automatisering, support',
+    ogUrl: 'https://nodely.nl/faq'
+  });
+
   const [openItems, setOpenItems] = useState<{ [key: string]: boolean }>({});
 
   const toggleItem = (key: string) => {
