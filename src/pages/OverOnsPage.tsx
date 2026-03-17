@@ -8,7 +8,7 @@ import stijnImage from '/team/stijn-van-der-heijden.jpg';
 import coenImage from '/team/coen-hiddink.jpg';
 
 // Import team photo
-import teamPhotoImage from '/src/assets/walkingoutside.jpg';
+import teamPhotoImage from '../assets/walkingoutside.jpg';
 
 export function OverOnsPage() {
   const values = [
