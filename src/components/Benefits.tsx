@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Check } from 'lucide-react';
+import workingLaptopImage from '../assets/workinglaptop.jpg';
 
 const benefits = [
   'Tot 95% of meer tijdsbesparing, afhankelijk van de use-case',
@@ -103,7 +104,7 @@ export function Benefits() {
             className="hidden lg:flex items-center justify-center"
           >
             <img
-              src="/src/assets/workinglaptop.jpg"
+              src={workingLaptopImage}
               alt="Professional working on laptop"
               className="rounded-2xl shadow-md w-full h-auto"
             />
