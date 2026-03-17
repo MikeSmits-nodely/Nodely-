@@ -1,20 +1,63 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import heroBg from '@/assets/hero-bg.jpg';
 
 export function Hero() {
   return (
-    <section className="relative bg-white pt-24 pb-32 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h1 
+    <section
+      style={{
+        position: 'relative',
+        minHeight: '100svh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        width: '100vw',
+        marginLeft: '50%',
+        transform: 'translateX(-50%)',
+      }}
+    >
+      {/* White base behind image */}
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'white', zIndex: 0 }} />
+
+      {/* Image at exactly 13% opacity */}
+      <img
+        src={heroBg}
+        alt=""
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center bottom',
+          opacity: 0.13,
+          zIndex: 1,
+        }}
+      />
+
+      {/* Content */}
+      <div 
+        style={{ 
+          position: 'relative', 
+          zIndex: 2, 
+          width: '100%', 
+          maxWidth: '80rem', 
+          margin: '0 auto', 
+          padding: '8rem 1rem' 
+        }}
+        className="px-4 sm:px-6 lg:px-8"
+      >
+        <div style={{ maxWidth: '56rem', margin: '0 auto', textAlign: 'center' }}>
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#003366] mb-8"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#003366] mb-6 sm:mb-8"
           >
             Slimmer werken begint hier
           </motion.h1>
-          
+
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -23,25 +66,25 @@ export function Hero() {
           >
             Nodely ontwikkelt <span className="text-[#E67E22] font-semibold">klantspecifieke AI-modellen</span> die workflows <span className="text-[#E67E22] font-semibold">automatiseren</span>, waardoor bedrijfsprocessen <span className="text-[#E67E22] font-semibold">efficiënter</span>, <span className="text-[#E67E22] font-semibold">consistenter</span> en <span className="text-[#E67E22] font-semibold">kosteneffectiever</span> worden.
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex justify-center items-center px-2"
           >
-            <Link 
-              to="/contact"
-              className="bg-[#FF6200] hover:bg-[#E55800] text-white px-8 py-4 rounded-lg font-medium text-lg transition-all duration-200 hover:shadow-lg hover:scale-105"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto"
             >
-              Neem contact op
-            </Link>
-            <Link 
-              to="/applicaties"
-              className="border-2 border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white px-8 py-4 rounded-lg font-medium text-lg transition-all duration-200 hover:scale-105"
-            >
-              Bekijk voorbeelden
-            </Link>
+              <Link
+                to="/applicaties"
+                className="block w-full sm:inline-block border-2 border-[#003366] text-[#003366] hover:bg-[#003366] hover:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium text-base sm:text-lg transition-all duration-200 text-center"
+              >
+                Bekijk voorbeelden
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </div>

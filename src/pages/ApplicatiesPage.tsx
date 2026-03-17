@@ -57,10 +57,10 @@ export function ApplicatiesPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
-            Klantspecifieke Automatiseringen
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Klantspecifieke Automatiseringen
             </h1>
-            <p className="text-xl text-white/90 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed">
               Ontdek hoe we bedrijfsprocessen transformeren met <span className="text-[#E67E22] font-semibold">op maat gemaakte AI-oplossingen</span>. 
               Geen standaardproducten, maar <span className="text-[#E67E22] font-semibold">volledig aangepast</span> aan jouw uitdagingen.
             </p>
@@ -148,10 +148,10 @@ export function ApplicatiesPage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-16 bg-gradient-to-br from-[#003366] to-[#004080] rounded-2xl p-8 md:p-12 text-white text-center"
           >
-            <h3 className="text-3xl font-bold mb-4">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4">
               Alle oplossingen zijn maatwerk
             </h3>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               Bovenstaande voorbeelden geven een beeld van wat er mogelijk is, maar elke oplossing wordt 
               <span className="text-[#FF6200] font-semibold"> klantspecifiek gebouwd</span>. We luisteren naar jouw uitdagingen en ontwerpen een systeem 
               dat <span className="text-[#FF6200] font-semibold">perfect aansluit</span> bij jouw processen en doelen.
@@ -169,12 +169,11 @@ export function ApplicatiesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#003366] mb-6">
-              Heb je een andere uitdaging?
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#003366] mb-6">
+              Benieuwd wat we voor jouw organisatie kunnen betekenen?
             </h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              We bouwen ook oplossingen voor processen die hier niet vermeld staan. 
-              Vertel ons over jouw specifieke situatie en we kijken samen naar de mogelijkheden.
+            <p className="text-base sm:text-xl text-gray-600 mb-8 leading-relaxed">
+              We doen een gratis efficiëntiescan van jouw bedrijfsprocessen en laten zien waar AI direct tijd en kosten bespaart. Vrijblijvend, concreet en altijd op maat.
             </p>
             <Link
               to="/contact"
