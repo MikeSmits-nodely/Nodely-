@@ -220,7 +220,7 @@ export function OverOnsPage() {
               <div className="mb-4 sm:mb-6 overflow-hidden rounded-2xl shadow-lg transition-all duration-300 group-hover:shadow-2xl">
                 <img 
                   src={mikeImage} 
-                  alt="Mike Smits - Co-Founder Nodely" 
+                  alt="Mike Smits - Account Manager Nodely" 
                   className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
@@ -228,7 +228,7 @@ export function OverOnsPage() {
                 Mike Smits
               </h3>
               <p className="text-gray-600 mb-3 sm:mb-4 text-base sm:text-lg">
-                Co-Founder
+                Account Manager
               </p>
               <a 
                 href="https://www.linkedin.com/in/m-smits/" 
@@ -252,7 +252,7 @@ export function OverOnsPage() {
               <div className="mb-4 sm:mb-6 overflow-hidden rounded-2xl shadow-lg transition-all duration-300 group-hover:shadow-2xl">
                 <img 
                   src={stijnImage} 
-                  alt="Stijn van der Heijden - Co-Founder Nodely" 
+                  alt="Stijn van der Heijden - Software Developer Nodely" 
                   className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
@@ -260,7 +260,7 @@ export function OverOnsPage() {
                 Stijn van der Heijden
               </h3>
               <p className="text-gray-600 mb-3 sm:mb-4 text-base sm:text-lg">
-                Co-Founder
+                Software Developer
               </p>
               <a 
                 href="https://www.linkedin.com/in/stijn-van-der-heijden-6a7660210/" 
@@ -284,7 +284,7 @@ export function OverOnsPage() {
               <div className="mb-4 sm:mb-6 overflow-hidden rounded-2xl shadow-lg transition-all duration-300 group-hover:shadow-2xl">
                 <img 
                   src={coenImage} 
-                  alt="Coen Hiddink - Co-Founder Nodely" 
+                  alt="Coen Hiddink - Software Developer Nodely" 
                   className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
@@ -292,7 +292,7 @@ export function OverOnsPage() {
                 Coen Hiddink
               </h3>
               <p className="text-gray-600 mb-3 sm:mb-4 text-base sm:text-lg">
-                Co-Founder
+                Software Developer
               </p>
               <a 
                 href="https://www.linkedin.com/in/coen-hiddink/" 
