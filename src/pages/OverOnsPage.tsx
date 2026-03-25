@@ -3,12 +3,12 @@ import { Target, Users, Lightbulb, Award, CheckCircle2, Linkedin, ArrowRight } f
 import { Link } from 'react-router-dom';
 
 // Import team member images
-import mikeImage from '/team/mike-smits.jpg';
-import stijnImage from '/team/stijn-van-der-heijden.jpg';
-import coenImage from '/team/coen-hiddink.jpg';
+import mikeImage from '/team/mike-smits.webp';
+import stijnImage from '/team/stijn-van-der-heijden.webp';
+import coenImage from '/team/coen-hiddink.webp';
 
 // Import team photo
-import teamPhotoImage from '../assets/walkingoutside.jpg';
+import teamPhotoImage from '../assets/walkingoutside.avif';
 
 export function OverOnsPage() {
   const values = [

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Check } from 'lucide-react';
-import workingLaptopImage from '../assets/workinglaptop.jpg';
+import workingLaptopImage from '../assets/workinglaptop.avif';
 
 const benefits = [
   'Tot 95% of meer tijdsbesparing, afhankelijk van de use-case',
