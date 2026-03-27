@@ -15,7 +15,7 @@ const highlightBenefit = (text: string) => {
   if (text.includes('95%')) {
     return (
       <>
-        Tot <span className="text-[#E67E22] font-semibold">95%</span> of meer <span className="text-[#E67E22] font-semibold">tijdsbesparing</span>, afhankelijk van de use-case
+        Tot <span className="text-[#E67E22] font-semibold">95%</span> <span className="text-[#E67E22] font-semibold">tijdsbesparing</span>, afhankelijk van de use-case
       </>
     );
   } else if (text.includes('Consistenter')) {
