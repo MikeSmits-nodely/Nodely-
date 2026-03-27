@@ -64,7 +64,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl sm:text-2xl text-gray-600 mb-12 leading-relaxed"
           >
-            Nodely ontwikkelt <span className="text-[#E67E22] font-semibold">klantspecifieke AI-modellen</span> die workflows <span className="text-[#E67E22] font-semibold">automatiseren</span>, waardoor bedrijfsprocessen <span className="text-[#E67E22] font-semibold">efficiënter</span>, <span className="text-[#E67E22] font-semibold">consistenter</span> en <span className="text-[#E67E22] font-semibold">kosteneffectiever</span> worden.
+            Nodely <span className="text-[#E67E22] font-semibold">automatiseert</span> jouw werkprocessen met behulp van <span className="text-[#E67E22] font-semibold">AI</span>, waardoor handmatige taken verdwijnen en je organisatie <span className="text-[#E67E22] font-semibold">sneller</span> en <span className="text-[#E67E22] font-semibold">foutloos</span> opereert.
           </motion.p>
 
           <motion.div
